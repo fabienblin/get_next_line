@@ -82,21 +82,34 @@ int			ft_bufjoin(t_reader *rdr, char **line)
 		}
 	}
 */
-	while ((read_ret = read(FD, BUFFER, BUFF_SIZE)) > 0
-			&& !EOL)
+	while ((read_ret = read(FD, BUFFER, BUFF_SIZE)) > 0)
 	{
-		*line = ft_memcat(*line, BUFFER, line_len, read_ret);
-		ft_bzero(BUFFER, BUFF_SIZE);
-		line_len += read_ret;
+		if (EOL)
+		{
+			*line = ft_memcat(*line, BUFFER, line_len, EOL - BUFFER + 1);
+			line_len += EOL - BUFFER + 1;
+			(*line)[line_len - 1] = 0;
+			// repositioner EOL au debut du buffer
+			ft_memmove(BUFFER, EOL + 1, BUFF_SIZE);
+			return (1);
+		}
+		else
+		{
+			*line = ft_memcat(*line, BUFFER, line_len, read_ret);
+			ft_bzero(BUFFER, BUFF_SIZE);
+			line_len += read_ret;
+		}
 	}
+	//(*line)[line_len - 1] = 0;
+	/*
 	if (EOL)
 	{
 		*line = ft_memcat(*line, BUFFER, line_len, EOL - BUFFER + 1);
 		line_len += EOL - BUFFER + 1;
 	}
-	(*line)[line_len] = 0;
-	printf("line = %s\nline_len = %d\n----\n",*line, line_len);
-	return (line_len ? 1 : read_ret);
+	*/
+//	printf("line = %s\nline_len = %d\n----\n",*line, line_len);
+	return ((read_ret > 0) ? 1 : read_ret);
 }
 
 t_reader	*ft_getreader(int fd, t_list **rdr_lst)
