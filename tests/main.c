@@ -8,7 +8,7 @@ int main ()
 
 	int fd1 = open("file", O_RDONLY);
 	line = NULL;
-	if (get_next_line(fd1, &line) > 0)
+	while (get_next_line(fd1, &line) == 1)
 	{
 		printf("'%s'\n",line);
 		free(line);

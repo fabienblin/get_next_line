@@ -92,9 +92,11 @@ int			ft_bufjoin(t_reader *rdr, char **line)
 	if (EOL)
 	{
 		*line = ft_memcat(*line, BUFFER, line_len, EOL - BUFFER + 1);
-		*ft_strchr(*line, '\n') = 0;
+		line_len += EOL - BUFFER + 1;
 	}
-	return ((read_ret > 0) ? 1 : read_ret);
+	(*line)[line_len] = 0;
+	printf("line = %s\nline_len = %d\n----\n",*line, line_len);
+	return (line_len ? 1 : read_ret);
 }
 
 t_reader	*ft_getreader(int fd, t_list **rdr_lst)
@@ -124,8 +126,5 @@ int			get_next_line(int const fd, char **line)
 		return (-1);
 	if (!(rdr = ft_getreader(fd, &rdr_lst)))
 		return (-1);
-	if (BUFFER)
-	{	ft_putendl(BUFFER);
-	ft_putendl("-------");}
 	return (ft_bufjoin(rdr, line));
 }

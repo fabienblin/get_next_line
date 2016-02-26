@@ -12,10 +12,10 @@
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 100
+# define BUFF_SIZE 10
 # define RDR ((t_reader *)((*rdr_lst)->content))
 # define BUFFER (&rdr->buffer[0])
-# define EOL (ft_strchr(BUFFER, '\n'))
+# define EOL ((char *)ft_memchr(BUFFER, '\n', BUFF_SIZE))
 # define FD (rdr->fd)
 
 # include <unistd.h>
