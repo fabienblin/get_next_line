@@ -71,17 +71,15 @@ int			ft_bufjoin(t_reader *rdr, char **line)
 	size_t	line_len = 0;
 	size_t	eol_len = 0;
 
-/*	if (EOL)
+	if (EOL)
 	{
-		*line = ft_strdup(EOL);
-		int j = EOL - BUFFER;
-		ft_memcpy(BUFFER, EOL, EOL - BUFFER);
-		while (j--)
-		{
-			rdr->buffer[j] = 0;
-		}
+	//	printf("buffer=(%s)\n", BUFFER);
+		line_len += (BUFF_SIZE - (EOL - BUFFER) - 1);
+	//	printf("line_len=%d\n",line_len);
+		*line = malloc(sizeof(char) * line_len);
+		ft_memcpy(*line, EOL + 1, BUFF_SIZE);
+	//	printf("line=%s", *line)
 	}
-*/
 	while ((read_ret = read(FD, BUFFER, BUFF_SIZE)) > 0)
 	{
 		if (EOL)
@@ -89,8 +87,6 @@ int			ft_bufjoin(t_reader *rdr, char **line)
 			*line = ft_memcat(*line, BUFFER, line_len, EOL - BUFFER + 1);
 			line_len += EOL - BUFFER + 1;
 			(*line)[line_len - 1] = 0;
-			// repositioner EOL au debut du buffer
-			ft_memmove(BUFFER, EOL + 1, BUFF_SIZE);
 			return (1);
 		}
 		else
@@ -100,14 +96,6 @@ int			ft_bufjoin(t_reader *rdr, char **line)
 			line_len += read_ret;
 		}
 	}
-	//(*line)[line_len - 1] = 0;
-	/*
-	if (EOL)
-	{
-		*line = ft_memcat(*line, BUFFER, line_len, EOL - BUFFER + 1);
-		line_len += EOL - BUFFER + 1;
-	}
-	*/
 //	printf("line = %s\nline_len = %d\n----\n",*line, line_len);
 	return ((read_ret > 0) ? 1 : read_ret);
 }
