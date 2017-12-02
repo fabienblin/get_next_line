@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_memchr.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: fblin <fblin@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: fablin <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2016/01/02 13:22:38 by fblin        #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/30 12:00:13 by fablin      ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/28 17:35:25 by fablin       #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/28 17:35:25 by fablin      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 90
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
+#include "libft.h"
 
-int				get_next_line(int const fd, char **line);
-
-typedef	struct	s_reader
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int				fd;
-	char			*start;
-}				t_reader;
-#endif
+	size_t			i;
+	unsigned char	car;
+	unsigned char	*str;
+
+	i = 0;
+	car = (unsigned char)c;
+	str = (unsigned char *)s;
+	while (i < n)
+	{
+		if (str[i] == car)
+			return ((void *)str + i);
+		i++;
+	}
+	return (NULL);
+}

@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_memcmp.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: fblin <fblin@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: fablin <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2016/01/02 13:22:38 by fblin        #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/30 12:00:13 by fablin      ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/28 17:35:25 by fablin       #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/28 17:35:25 by fablin      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 90
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
+#include "libft.h"
 
-int				get_next_line(int const fd, char **line);
-
-typedef	struct	s_reader
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int				fd;
-	char			*start;
-}				t_reader;
-#endif
+	int				ret;
+	int				i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+
+	ret = 0;
+	i = 0;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while ((int)n > i)
+	{
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
+	}
+	return (ret);
+}
