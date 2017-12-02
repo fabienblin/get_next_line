@@ -6,13 +6,12 @@
 /*   By: fablin <fablin@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/28 17:35:23 by fablin       #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/01 16:35:35 by fablin      ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/02 17:06:09 by fablin      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void	ft_exit(char *err_message)
 {
