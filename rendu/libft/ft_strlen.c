@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_realloc.c                                     .::    .:/ .      .::   */
+/*   ft_strlen.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: fablin <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
+/*   By: fablin <fablin@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/28 17:35:27 by fablin       #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/28 17:35:27 by fablin      ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/28 17:35:29 by fablin       #+#   ##    ##    #+#       */
+/*   Updated: 2017/12/10 13:34:26 by fablin      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void **mem, size_t size)
+size_t	ft_strlen(const char *s)
 {
-	void	*realloc;
+	char *end;
 
-	realloc = NULL;
-	if (!(realloc = (void *)malloc(size)))
-		return (NULL);
-	if (*mem)
-	{
-		ft_memcpy(realloc, *mem, size);
-		free(*mem);
-		*mem = realloc;
-	}
-	return (realloc);
+	if (!s)
+		return (0);
+	end = (char *)s;
+	while (*end)
+		end++;
+	return (end - s);
 }

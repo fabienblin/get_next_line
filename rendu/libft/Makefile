@@ -6,16 +6,16 @@
 #    By: fablin <fablin@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/28 17:35:55 by fablin       #+#   ##    ##    #+#        #
-#    Updated: 2017/11/28 17:42:12 by fablin      ###    #+. /#+    ###.fr      #
+#    Updated: 2017/12/07 16:54:39 by fablin      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
-SRC_DIR =	./src/
+SRC_DIR =	./
 
-OBJ_DIR =	./obj/
+OBJ_DIR =	./
 
-INC_DIR =	./inc/
+INC_DIR =	./includes/
 
 NAME =		libft.a
 
@@ -38,7 +38,7 @@ CFILES =	ft_memset.c		ft_strcat.c		ft_isdigit.c	ft_striter.c	\
 		 	ft_strdup.c		ft_strncmp.c	ft_strnew.c		ft_strtrim.c	\
 			ft_strcpy.c		ft_atoi.c		ft_strdel.c		ft_strsplit.c	\
 			ft_strncpy.c	ft_isalpha.c	ft_strclr.c		ft_itoa.c		\
-			$(BONUS)		$(FBLIN)
+			$(BONUS)		$(FABLIN)
 
 SOURCES =	$(addprefix $(SRC_DIR), $(CFILES))
 
@@ -53,8 +53,6 @@ all : $(NAME)
 $(NAME) :
 	@gcc $(FLAGS) -c $(SOURCES) -I $(INC_DIR)
 	@ar rc $(NAME) $(OFILES)
-	@mkdir -p $(OBJ_DIR)
-	@mv $(OFILES) $(OBJ_DIR)
 	@echo "\n===> LIBFT HAS BEEN COMPILED <===\n"
 
 clean :
@@ -62,7 +60,6 @@ clean :
 
 fclean : clean
 	@rm -rf $(NAME)
-	@rm -rf $(OBJ_DIR)
 
 re : fclean all
 

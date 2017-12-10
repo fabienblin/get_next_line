@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strncat.c                                     .::    .:/ .      .::   */
+/*   ft_realloc.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: fablin <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
+/*   By: fablin <fablin@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/28 17:35:29 by fablin       #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/28 17:35:29 by fablin      ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/28 17:35:27 by fablin       #+#   ##    ##    #+#       */
+/*   Updated: 2017/12/10 16:48:54 by fablin      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+void	*ft_realloc(void **mem, size_t size)
 {
-	int s1_len;
-	int i;
+	void	*real;
 
-	s1_len = ft_strlen(s1);
-	i = 0;
-	while ((int)n > i && *s2)
+	real = NULL;
+	if (!(real = (void *)malloc(size)))
+		return (NULL);
+	if (*mem)
 	{
-		*(s1 + s1_len + i) = *(char *)s2;
-		i++;
-		s2++;
+		ft_memcpy(real, *mem, size);
+		free(*mem);
 	}
-	*(s1 + s1_len + i) = 0;
-	return (s1);
+	*mem = real;
+	return (real);
 }

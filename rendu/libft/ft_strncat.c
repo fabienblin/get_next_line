@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strlen.c                                      .::    .:/ .      .::   */
+/*   ft_strncat.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: fablin <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
+/*   By: fablin <fablin@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/28 17:35:29 by fablin       #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/28 17:35:29 by fablin      ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/10 16:00:13 by fablin      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	char *end;
+	int s1_len;
+	int i;
 
-	end = (char *)s;
-	while (*end)
-		end++;
-	return (end - s);
+	s1_len = ft_strlen(s1);
+	i = 0;
+	while ((int)n > i && *s2)
+	{
+		*(s1 + s1_len + i) = *(char *)s2;
+		i++;
+		s2++;
+	}
+	*(s1 + s1_len + i) = 0;
+	return (s1);
 }
