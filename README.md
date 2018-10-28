@@ -7,7 +7,9 @@ This project adds a reading function to Libft. This allows multiple file descrip
 ### Returns
 
 While reading a line get_next_line() returns 1.
+
 Returns 0 at EOF and closes.
+
 If open or read fails with an error, get_next_line() returns -1 and closes.
 
 ### Example
