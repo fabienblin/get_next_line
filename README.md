@@ -27,6 +27,7 @@ int main (int argc, char **argv)
   while ((gnl = get_next_line(fd, &line)) > 0)
   {
     printf("%s", line);
+    strdel(&line);
   }
   if (gnl == -1)
     exit(0);
