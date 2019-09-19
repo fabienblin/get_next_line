@@ -46,4 +46,4 @@ gcc main.c -I ./libft/inc -L libft/libft.a -o gnl
 
 ## Author
 
-* **Fabien Blin** @ Le-101
+* **Fabien Blin** @ 42 Lyon
